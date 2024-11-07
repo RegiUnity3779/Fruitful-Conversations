@@ -6,6 +6,7 @@ public class PlantCharacter : MonoBehaviour
 {
     public GameManager gameManager;
     public PlantData data;
+    public bool unlocked;
     // Start is called before the first frame update
     void Start()
     {

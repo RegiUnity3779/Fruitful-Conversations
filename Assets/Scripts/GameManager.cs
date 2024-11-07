@@ -5,17 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public List<PlantCharacter> plantCharactersList = new List<PlantCharacter>();
+    public List<PlantData> plantCharactersList = new List<PlantData>();
     public List<float> plantCharacterFriendshipList = new List<float>();
     public List<bool> plantCharacterUnlockedList = new List<bool>();
-    public CharacterButton characterButtonTemplate;
     public List<CharacterButton> characterButtonList = new List<CharacterButton>();
     public GameObject characterMenu;
+    public Color[] characterMood;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Setup();
     }
 
     // Update is called once per frame
@@ -30,15 +30,19 @@ public class GameManager : MonoBehaviour
         {
             plantCharacterFriendshipList.Clear();
         }
-        for(int i = 0; i < plantCharactersList.Count; i++)
+        for(int i = 0; i < characterButtonList.Count; i++)
         {
-           CharacterButton a = Instantiate(characterButtonTemplate, characterMenu.transform);
-            a.UpdateUI();
+
+            characterButtonList[i].plantData = plantCharactersList[i];
+            plantCharacterFriendshipList.Add(0);
+            plantCharacterUnlockedList.Add(plantCharactersList[i].isUnlocked);
+            characterButtonList[i].UpdateUI();
+            characterButtonList[i].button.interactable = plantCharactersList[i].isUnlocked;
         }
     }
 
     public void StartCharacterConversation(CharacterButton button)
     {
-        Debug.Log("Start Conversation with " + $"{button.plantCharacter}");
+        Debug.Log("Start Conversation with " + $"{button.plantData.name}");
     }
 }

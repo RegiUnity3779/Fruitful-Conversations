@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5768991703acff541accfae5df4b6f4d, type: 3}
-  m_Name: Tomatoe
+  m_Name: Mushroom
   m_EditorClassIdentifier: 
-  plantSprite: {fileID: -2047924295, guid: 9848a7dfba5ed7a40a0511655ac47336, type: 3}
+  plantSprite: {fileID: 21300000, guid: cdbe36db5a84b3648b6fdb59e35aaf39, type: 3}
   loveConversation: []
   likeConversation: []
   dislikeConversation: []
   hateConversation: []
-  isUnlocked: 1
+  isUnlocked: 0
   unlockPlant: {fileID: 11400000, guid: c22e572afdd9ab9449a2bfc27b01e8a3, type: 2}

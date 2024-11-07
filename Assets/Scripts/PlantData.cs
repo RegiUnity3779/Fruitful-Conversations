@@ -11,7 +11,8 @@ public class PlantData : ScriptableObject
     public List<ConversationType> dislikeConversation = new List<ConversationType>();
     public List<ConversationType> hateConversation = new List<ConversationType>();
 
-    public PlantCharacter unlockPlant;
+    public bool isUnlocked;
+    public PlantData unlockPlant;
    
 }
 

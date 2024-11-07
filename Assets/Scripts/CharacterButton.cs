@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class CharacterButton : MonoBehaviour
 {
-    public PlantCharacter plantCharacter;
+    public GameManager gameManager;
+    public PlantData plantData;
     public Image characterImage;
     public Image[] heartGuage;
+    public Button button;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,30 +24,49 @@ public class CharacterButton : MonoBehaviour
 
     public void UpdateUI()
     {
-        characterImage.sprite = plantCharacter.data.plantSprite;
+        characterImage.sprite = plantData.plantSprite;
         
-        for(int i = 0; i < plantCharacter.gameManager.plantCharactersList.Count; i++)
+        for(int i = 0; i < gameManager.plantCharactersList.Count; i++)
         {
-            if(plantCharacter == plantCharacter.gameManager.plantCharactersList[i])
+            if(plantData == gameManager.plantCharactersList[i])
             {
-                float a = plantCharacter.gameManager.plantCharacterFriendshipList[i];
+                float a = gameManager.plantCharacterFriendshipList[i];
                 if( a > 100)
                 {
                     a = 100;
                 }
 
+                if (a < -100)
+                {
+                    a = -100;
+                }
                 for (int j = 0; j < heartGuage.Length; j++)
                 {
-                    if (a > 20)
+                    if (a >= 0)
                     {
-                        a -= 20;
-                        heartGuage[j].fillAmount = 1;
+                        if (a > 20)
+                        {
+                            a -= 20;
+                            heartGuage[j].fillAmount = 1;
+                        }
+                        else
+                        {
+                            heartGuage[j].fillAmount = a / 20;
+                        }
                     }
+
                     else
                     {
-                        heartGuage[j].fillAmount = a / 20;
+                        if (a < -20)
+                        {
+                            a += 20;
+                            heartGuage[j].fillAmount = 1;
+                        }
+                        else
+                        {
+                            heartGuage[j].fillAmount = -(a / 20);
+                        }
                     }
-                        
         }
             }
         }
