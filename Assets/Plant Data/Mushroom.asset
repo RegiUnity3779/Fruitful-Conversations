@@ -18,4 +18,7 @@ MonoBehaviour:
   dislikeConversation: []
   hateConversation: []
   isUnlocked: 0
-  unlockPlant: {fileID: 11400000, guid: c22e572afdd9ab9449a2bfc27b01e8a3, type: 2}
+  unlockPlant:
+  - {fileID: 11400000, guid: 70bfcc30bafe2374098c06c4117fa1bf, type: 2}
+  unlockFriendshipAmount:
+  - 100

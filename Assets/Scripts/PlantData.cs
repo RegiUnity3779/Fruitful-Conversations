@@ -12,7 +12,8 @@ public class PlantData : ScriptableObject
     public List<ConversationType> hateConversation = new List<ConversationType>();
 
     public bool isUnlocked;
-    public PlantData unlockPlant;
+    public PlantData[] unlockPlant;
+    public float[] unlockFriendshipAmount;
    
 }
 

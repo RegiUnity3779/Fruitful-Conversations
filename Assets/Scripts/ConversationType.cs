@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Conversation Data", menuName =("New Conversation Data"))]
 public class ConversationType : ScriptableObject
 {
- 
+    public Sprite sprite;
 }

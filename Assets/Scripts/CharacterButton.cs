@@ -13,7 +13,7 @@ public class CharacterButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -24,53 +24,108 @@ public class CharacterButton : MonoBehaviour
 
     public void UpdateUI()
     {
-        characterImage.sprite = plantData.plantSprite;
-        
-        for(int i = 0; i < gameManager.plantCharactersList.Count; i++)
+        if (plantData != null)
         {
-            if(plantData == gameManager.plantCharactersList[i])
-            {
-                float a = gameManager.plantCharacterFriendshipList[i];
-                if( a > 100)
-                {
-                    a = 100;
-                }
+            characterImage.sprite = plantData.plantSprite;
 
-                if (a < -100)
+            for (int i = 0; i < gameManager.plantCharactersList.Count; i++)
+            {
+                if (plantData == gameManager.plantCharactersList[i])
                 {
-                    a = -100;
-                }
-                for (int j = 0; j < heartGuage.Length; j++)
-                {
+                    button.interactable = gameManager.plantCharacterUnlockedList[i];
+
+                    float a = gameManager.plantCharacterFriendshipList[i];
+
+                    if (a > 100)
+                    {
+                        a = 100;
+                    }
+
+                    else if (a < -100)
+                    {
+                        a = -100;
+                    }
+
                     if (a >= 0)
                     {
-                        if (a > 20)
+                        for (int j = 0; j < heartGuage.Length; j++)
                         {
-                            a -= 20;
-                            heartGuage[j].fillAmount = 1;
+
+                            heartGuage[j].color = new Color(gameManager.heartColour[0].r, gameManager.heartColour[0].g, gameManager.heartColour[0].b);
+
+                            if (a > 0f)
+                            {
+                                if (a > 20f)
+                                {
+
+                                    heartGuage[j].fillAmount = 1f;
+                                }
+                                else
+                                {
+                                    heartGuage[j].fillAmount = a / 20;
+                                }
+
+                                a -= 20f;
+                            }
+
+                            else
+                            {
+                                heartGuage[j].fillAmount = 0f;
+                            }
                         }
-                        else
-                        {
-                            heartGuage[j].fillAmount = a / 20;
-                        }
+
                     }
 
                     else
                     {
-                        if (a < -20)
+
+
+                        if (a < 0f)
                         {
-                            a += 20;
-                            heartGuage[j].fillAmount = 1;
-                        }
-                        else
-                        {
-                            heartGuage[j].fillAmount = -(a / 20);
+                            for (int j = 0; j < heartGuage.Length; j++)
+                            {
+                                heartGuage[j].color = new Color(gameManager.heartColour[1].r, gameManager.heartColour[1].g, gameManager.heartColour[1].b);
+                                if (a < 0f)
+                                {
+                                    if (a < -20f)
+                                    {
+
+                                        heartGuage[j].fillAmount = 1f;
+                                    }
+                                    else
+                                    {
+                                        heartGuage[j].fillAmount = a / -20;
+                                    }
+                                }
+
+                                else
+                                {
+                                    heartGuage[j].fillAmount = 0f;
+                                }
+                                a += 20f;
+                            }
+
                         }
                     }
-        }
+                }
+
+
             }
         }
-        
-       
+
+        else
+        {
+            button.interactable = false;
+            characterImage.sprite = null;
+
+            for (int j = 0; j < heartGuage.Length; j++)
+            {
+
+                heartGuage[j].color = new Color(gameManager.heartColour[0].r, gameManager.heartColour[0].g, gameManager.heartColour[0].b);
+                heartGuage[j].fillAmount = 0;
+            }
+        }
+
     }
-}
+    }
+

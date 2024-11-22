@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5768991703acff541accfae5df4b6f4d, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: 
-  plantSprite: {fileID: 1273710847, guid: 28b6404368f93b842be3da4167515e90, type: 3}
+  plantSprite: {fileID: 21300000, guid: 9dc7ca05426fa4d429545bfd0c9dc4a5, type: 3}
   loveConversation: []
   likeConversation: []
   dislikeConversation: []
   hateConversation: []
   isUnlocked: 0
-  unlockPlant: {fileID: 0}
+  unlockPlant:
+  - {fileID: 11400000, guid: 48f151f6e919630459306cbbfb164b9a, type: 2}
+  unlockFriendshipAmount:
+  - -100
